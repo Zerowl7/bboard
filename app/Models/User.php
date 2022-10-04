@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Bb;
 
 class User extends Authenticatable
 {
@@ -33,6 +34,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function bbs() {
+        return $this->hasMany(Bb::class);
+}
+
     /**
      * The attributes that should be cast.
      *
@@ -41,4 +46,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+   
 }
